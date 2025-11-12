@@ -1,0 +1,22 @@
+html, body {
+  margin: 0;
+  height: 100%;
+  scroll-snap-type: y mandatory;
+  overflow-y: scroll;
+  scroll-behavior: smooth;
+}
+
+.site-content {
+  padding-top: 70px; 
+  padding-bottom: 70px; 
+}
+
+section {
+  height: 100vh;
+  scroll-snap-align: start;
+  background-color: #f8f9fa;
+}
+
+section:not(:last-child) {
+  border-bottom: 1px solid #ccc;
+}
