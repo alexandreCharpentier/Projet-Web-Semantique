@@ -27,20 +27,27 @@
         </section>
 
         <section class="d-flex flex-column justify-content-center align-items-center text-center border">
-        <h1 class="mb-4">Les villes Fleuries sont elles moins polluées ?</h2>
+        <h1 class="mb-4">Les villes Fleuries sont elles moins polluées ?</h1>
             <p class="lead text-muted fst-italic">Une analyse de Alexandre Charpentier et Nicolas Vouilloux</p>
         <img src="images/quatre_fleurs.png" alt="Villes fleuries" class="img-fluid mb-3" />
         </section>
 
-        <section class="d-flex flex-column justify-content-center align-items-center border" style="min-height: 100vh;">
+        <section class="d-flex flex-column justify-content-center align-items-center border">
             <div class="container d-flex justify-content-center">
                 <div class="text-start">
-                    <h2 class="mb-4">Sommaire</h2>
-                    <ul class="list-unstyled lead">
+                    <h2 class="mb-2">Sommaire</h2>
+                    <ul class="list-unstyled lead ps-5">
                         <li>Contexte
                             <ul>
-                                <li>Le label "Villes Fleuries"</li>
                                 <li>Méthodologie</li>
+                                <ul>
+                                    <li>Les outils</li>
+                                    <li>Dataset</li>
+                                    <li>Transformation</li>
+                                    <li>Enrichissement</li>
+                                    <li>Site Web</li>
+                                </ul>
+                                <li>Le label Villes Fleuries</li>
                             </ul>
                         </li>
                         <li>Étude
@@ -61,6 +68,137 @@
                 </div>
             </div>
         </section>
+
+        <section class="d-flex flex-column justify-content-center align-items-center text-center border">
+            <h1>Contexte</h1>
+        </section>
+
+        <section class="d-flex flex-column justify-content-center align-items-center text-center border">
+            <h1 class="mb-3">Méthodologie</h1>
+            <h3 class="mb-5">Les outils</h3>
+            <p class="lead">Ce projet est basé sur <strong>SparQL</strong> : langage de requête pour interroger les données RDF.</p>
+            <p class="lead">Parmi les outils que nous avons utilisés pour notre projet, on retrouve :</p>
+            <div class="text-center" style="margin-left: 150px;">
+                <ul class="list-unstyled lead text-start d-inline-block">
+                    <li>- <a href="https://graphdb.ontotext.com/" target="_blank"><strong>GraphDB</strong></a> : base de données orientée graphe pour stocker et interroger nos données.</li>
+                    <li>- <a href="https://www.ontotext.com/products/ontotext-refine/" target="_blank"><strong>OnToTextRefine</strong></a> : outil pour nettoyer et structurer les données avant intégration.</li>
+                    <li>- <a href="https://www.wikidata.org/" target="_blank"><strong>WikiData</strong></a> : source d’informations pour enrichir nos données existantes.</li>
+                    <li>- JS / Bootstrap / Python / HTML…</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="d-flex flex-column justify-content-center align-items-center text-center border">
+            <h1 class="mb-3">Méthodologie</h1>
+            <h3 class="mb-5">Données</h3>
+            <div class="px-5">
+                <p class="lead">Pour notre étude, nous avons choisis 2 datasets :</p>
+                <ul class="list-unstyled lead">
+                    <li>- <a href="https://www.data.gouv.fr/datasets/communes-dile-de-france-labellisees-villes-et-villages-fleuris-2016/" target="_blank">
+                        Les Communes d'Île-de-France labellisées Villes et Villages Fleuris 2016
+                    </a></li>
+                    <li>- <a href="https://www.data.gouv.fr/datasets/indices-qualite-de-lair-citeair-journaliers-par-polluant-sur-lile-de-france-les-departements-les-communes-franciliennes-et-les-arrondissements-parisiens/" target="_blank">
+                        Indices Qualité de l'air (Citeair) journaliers par polluant sur l'Île-de-France 
+                    </a></li>
+                </ul>
+                <p class="lead">Ces datasets sont fournis par le gouvernement français et sont disponibles sur <a href="https://www.data.gouv.fr/" target="_blank">data.gouv.fr</a></p>
+                
+                <h5 class="my-2">Choix</h5>
+                
+                <p class="lead" style="max-width: 60vw;">
+                    L’idée de travailler sur les villes fleuries nous est venue en nous baladant sur le site.
+                    Ensuite, nous avons choisi assez naturellement d’étudier le rapport entre le label et la pollution des communes.
+                    Nous avons donc recherché un dataset qui pouvait nous aider pour cette étude, et celui sur les indices de qualité de l’air semblait parfait pour notre usage.
+                </p>
+
+                <h5 class="my-2">Périmètre</h5>
+
+                <p class="lead" style="max-width: 60vw;">
+                    Nous avons choisi de nous concentrer sur l’<strong>Île-de-France</strong> pour plusieurs raisons :
+                    Premièrement, la région est densément peuplée et comprend de nombreuses communes labellisées Villes et Villages Fleuris, ce qui offre un échantillon pertinent pour notre analyse.
+                    Deuxièmement, la qualité de l’air est un enjeu majeur dans cette région en raison de la forte activité urbaine et industrielle.
+                    De plus, limiter notre champ d’étude nous a permis de mieux gérer la quantité et la qualité des données à traiter. Pour les mêmes raisons, les données datent uniquement de <strong>2016</strong>.                
+                </p>
+            </div>
+        </section>
+
+        <section class="d-flex flex-column justify-content-center align-items-center text-center border">
+            <h1 class="mb-3">Méthodologie</h1>
+            <h3 class="mb-4">Transformation</h3>
+            <div style="max-width: 65vw;">
+                <p class="lead">Les fichiers CSV bruts de data.gouv sont de bonne qualité mais n’étaient pas assez exhaustifs pour notre étude. Nous avons donc, grâce à des scripts Python, adapté leur contenu.</p>
+                <p class="lead">Le problème principal était que le dataset pollution faisait référence aux communes par leur code INSEE, alors que celui des villes fleuries utilisait le code postal.</p>
+                <p class="lead">Pour assembler les deux, nous avons donc eu recours à un troisième CSV, également issu de data.gouv, qui associe les codes INSEE et postaux.</p>
+                <p class="lead">Grâce à Python, nous avons ajouté le code INSEE aux villes fleuries et effectué un peu de nettoyage.</p>
+            </div>
+
+            <div class="mt-4">
+                <a href="https://www.data.gouv.fr/datasets/correspondances-code-insee-code-postal-idf/" target="_blank">
+                    Dataset Correspondances Code INSEE - Code Postal l'Île-de-France 
+                </a>
+            </div>
+        
+            <h3 class="my-4">Enrichissement</h3>
+            <p class="lead">Une fois nos données prêtes et nettoyées, nous les avons enrichies avec des données de WikiData.</p>
+            <p class="lead">Nous avons choisi d’ajouter pour chaque commune sa population et sa surface (en km²).</p>
+
+            <div class="mt-4">
+                <a href="https://www.wikidata.org/wiki/Q247256" target="_blank">
+                    Exemple de commune WikiData 
+                </a>
+            </div>
+        </section>
+
+        <section class="d-flex flex-column justify-content-center align-items-center text-center border">
+            <div class="px-4">
+                <h1 class="mb-4">Le label Villes Fleuries</h1>
+                <h2 class="mb-4">Présentation</h3>
+                <p class="lead">De son nom complet, Label Villes et Villages Fleuris, est un label porté par le CNVVF (Conseil National des Villes et Villages Fleuris)</p>
+                <p class="lead">Il a pour but de récompenser les communes françaises qui s'engagent dans une démarche de qualité de vie par le biais d'un aménagement paysager et d'une gestion durable de l'environnement.</p>
+                <p class="lead">Le label est attribué selon un système de "fleurs", allant de 1 à 4, ce label est évalué par un jury qui visite la commune et analyse la cohérence du projet municipal, la diversité du patrimoine végétal, la qualité des aménagements et la mise en valeur de l’espace public. L’objectif est de promouvoir des villes plus agréables, durables et attractives pour leurs habitants et visiteurs.</p>
+                <br>
+                <img src="images/cnvvf.png" height="150px" alt="Logo CNVVF" class="mb-3" />
+                <br>
+                <img src="images/partenaires.png" alt="Partenaires" class="img-fluid mb-3" />
+            </div>
+        </section>
+
+        <section class="d-flex flex-column justify-content-center align-items-center text-center border">
+            <h1>Étude</h1>
+        </section>
+
+        <section class="d-flex flex-column justify-content-center align-items-center text-center border">
+            <h1>Premiers Résultats</h1>
+            <div style="max-width: 60vw;">
+                <p class="lead">Pour débuter notre étude, nous allons présenter nos premiers résultats.</p>
+                <p class="lead">Par la suite, nous irons plus loin dans l’analyse, mais nous avons construit cette étude de manière progressive. Ces résultats préliminaires constituent donc la première étape de notre cheminement.</p>
+
+                <h5>Requête</h5>
+                <p class="lead">Nous avons commencé par interroger notre base pour obtenir les moyennes de pollution par score de Villes Fleuries</p>
+
+                <div class="text-center">
+                    <pre class="bg-light p-3 rounded text-start d-inline-block" style="margin-left: 150px;">
+SELECT (?score AS ?scoreVilleFleurie)
+    (ROUND(AVG(xsd:decimal(?no2)) * 10) / 10 AS ?moyenneNO2)
+    (ROUND(AVG(xsd:decimal(?o3)) * 10) / 10 AS ?moyenneO3)
+    (ROUND(AVG(xsd:decimal(?pm10)) * 10) / 10 AS ?moyennePM10)
+WHERE {
+    ?com rdf:type rcw:Commune ;
+        rcw:scoreFleur ?score ;
+        rcw:ville ?ville ;
+        rcw:no2 ?no2 ;
+        rcw:o3 ?o3 ;
+        rcw:pm10 ?pm10 .
+}
+GROUP BY ?score
+ORDER BY ?scoreVilleFleurie
+                    </pre>
+                </div>
+
+                <p class="lead">Les résultats obtenus montrent une tendance intéressante : plus la commune est fleurie, plus elle est polluée et cela augmente même graduellement avec le score.</p>
+            </div>
+        </section>
+
     </main>
 
     <!-- Footer -->
