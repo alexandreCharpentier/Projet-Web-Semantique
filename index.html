@@ -174,7 +174,7 @@
                 <p class="lead">Par la suite, nous irons plus loin dans l’analyse, mais nous avons construit cette étude de manière progressive. Ces résultats préliminaires constituent donc la première étape de notre cheminement.</p>
 
                 <h5>Requête</h5>
-                <p class="lead">Nous avons commencé par interroger notre base pour obtenir les moyennes de pollution par score de Villes Fleuries</p>
+                <p class="lead">Nous avons commencé par intérroger notre base pour obtenir les moyennes de pollution par score de Villes Fleuries</p>
 
                 <div class="d-flex justify-content-center gap-4">
                     <pre class="bg-light p-3 rounded text-start">
@@ -200,6 +200,38 @@ ORDER BY ?scoreVilleFleurie
                 </div>
 
                 <p class="lead mt-3">Les résultats obtenus montrent une tendance intéressante : <strong>plus la commune est fleurie, plus elle est polluée et cela augmente même graduellement avec le score.</strong></p>
+            </div>
+        </section>
+
+        <section class="d-flex flex-column justify-content-center align-items-center text-center border">
+            <div style="max-width: 60vw;">
+                <h1 class="mb-4">Questionnement</h1>
+                <h5>Ces résultats sont pour le moins... étonnants !</h5>
+                <p class="lead">Pour ainsi dire, c'est même l'inverse des résultats escomptés.</p>
+                <p class="lead">À ce moment de notre étude, nous avons réalisé que nos résultats pourraient ne pas être fiables. En effet, si nous pouvions nous attendre à ce qu'un label ne règle pas magiquement la pollution industrielle, on ne pouvait néanmoins pas s'attendre à ce qu'elle l'aggrave.</p>
+                <p class="lead">Nous avons donc décidé de nous pencher sur les possibles biais de notre étude pour essayer d'y remédier.</p>
+                <p class="lead">Après réflexion, nous avons identifié plusieurs facteurs pouvant impacter nos résultats :</p>
+                <ul class="list-unstyled lead">
+                    <li>- La taille des communes : les grandes villes sont souvent plus riches</li>
+                    <li>- La population : les villes plus peuplées peuvent avoir davantage de pollution due au trafic et à l'industrie</li>
+                    <li>- Le Label : quels sont les critères de notation et sa fiabilité ? A qui le titre est-il desservit ?</li>
+                </ul>
+                <h5>En conclusion, nous avons besoin d'élargir notre étude pour pondérer nos moyennes.</h5>
+                <p class="lead">Pour corriger ces biais, nous avons décidé d'enrichir notre dataset avec des informations supplémentaires sur chaque commune, notamment leur population et leur superficie.</p>
+                <p class="lead">Grâce à ces nouvelles données, nous pouvons espérer découvrir les raisons sous-jacentes de ce résultat étonnant.</p>
+            </div>
+        </section>
+
+        <section class="d-flex flex-column justify-content-center align-items-center text-center border">
+            <div style="max-width: 60vw;">
+                <h1 class="mb-4">Enrichissement</h1>
+                <h5> TODO </h5>
+                <p class="lead">Décrire le processus d'enrichissement des données avec la population en 2016 (date de létude) et la surface.</p>
+                <p class="lead">Dire pourquoi on a chosis ceux la et pas d'autres  genre population car + de gens = + polution etc...  surface car + grand = plus a fleurir  et surtout les deux pour calculer la densite de pop</p>
+                <p class="lead">Dire qu'on aurait voulu prendre le budget anuel des mairies mais indispo et données trop disparates mais qu'on en parlera dans la section bonus</p>
+                <p class="lead">Montrer a quoi ressemble une commune dans graphdb</p>
+                <p class="lead">peut etre montrer d'autre angles d'attanque qui aurait ete interessant mais qui rentrait pas forcement dans notre étude</p>
+                
             </div>
         </section>
 
