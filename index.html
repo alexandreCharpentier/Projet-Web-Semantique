@@ -221,7 +221,82 @@ ORDER BY ?scoreVilleFleurie
                 <p class="lead">Grâce à ces nouvelles données, nous pouvons espérer découvrir les raisons sous-jacentes de ce résultat étonnant.</p>
             </div>
         </section>
+        
+        <section class="d-flex flex-column justify-content-center align-items-center text-center border">
+            <div style="max-width: 60vw;">
+                <h1 class="mb-4">Enrichissement</h1>
+                <h5>Enrichissement des données</h5>
 
+                <p class="lead">
+                    Pour affiner notre étude et corriger les biais identifiés dans les premiers résultats, nous avons décidé d’enrichir notre dataset avec deux informations essentielles pour chaque commune :
+                    <strong>la population en 2016</strong> et <strong>la surface (en km²)</strong>.
+                </p>
+
+                <p class="lead">
+                    Le choix de ces deux données nous est apparu comme le plus pertinent pour compléter notre analyse :
+                </p>
+
+                <ul class="list-unstyled lead">
+                    <li>- <strong>La population</strong> : plus une commune est peuplée, plus elle est susceptible de générer de la pollution (trafic, chauffage, industrie…).</li>
+                    <li>- <strong>La surface</strong> : utile pour mesurer l’étendue réelle et calculer ensuite la densité de population.</li>
+                </ul>
+
+                <p class="lead">
+                    Ces éléments nous permettent ensuite de calculer la <strong>densité de population</strong>, bien plus représentative de la pression humaine exercée sur le territoire.
+                </p>
+            </div>
+        </section>
+        <section class="d-flex flex-column justify-content-center align-items-center text-center border">
+            <div style="max-width: 60vw;">
+                <h1 class="mb-4">Enrichissement 2</h1>
+                <h5>Pourquoi seulement ces données ?</h5>
+
+                <p class="lead">
+                    Nous aurions souhaité intégrer d’autres variables, comme le <strong>budget annuel des communes</strong> consacré à l’environnement ou aux espaces verts, qui aurait pu constituer un indicateur intéressant.
+                </p>
+
+                <p class="lead">
+                    Cependant, ces données étaient soit indisponibles, soit trop incomplètes ou incohérentes selon les communes. Elles ne pouvaient donc pas être intégrées de manière fiable dans notre étude.
+                </p>
+
+                <p class="lead">
+                    Nous reviendrons néanmoins sur ces pistes dans la section « Pour aller plus loin ».
+                </p>
+            </div>
+        </section>
+        <section class="d-flex flex-column justify-content-center align-items-center text-center border">
+            <div style="max-width: 60vw;">
+                <h1 class="mb-4">Enrichissement 3</h1>
+                <h5>Exemple d’une commune dans GraphDB</h5>
+
+                <p class="lead">
+                    Après enrichissement, chaque commune est décrite par un ensemble de propriétés : son nom, son code INSEE, son score de fleurs, les niveaux mesurés de pollution, la population, la surface ainsi que la densité calculée.
+                </p>
+
+                <pre class="bg-light p-3 rounded text-start">
+                    rcw:Commune123
+                        rdf:type rcw:Commune ;
+                        rcw:nom "Ville-d’Exemple" ;
+                        rcw:codeINSEE "91234" ;
+                        rcw:scoreFleur 3 ;
+                        rcw:no2 21 ;
+                        rcw:o3 48 ;
+                        rcw:pm10 15 ;
+                        rcw:population 28450 ;
+                        rcw:surface 12.4 ;
+                        rcw:densitePopulation 2294 .
+                </pre>
+
+                <h5 class="mt-4">Autres angles d'analyse possibles</h5>
+
+                <p class="lead">
+                    D’autres pistes auraient pu être explorées : corrélation entre espaces verts et pollution, impact du réseau de transport, typologie des communes, ou encore évolution temporelle. Elles sortaient cependant du périmètre de notre étude.
+                </p>
+            </div>
+        </section>
+
+
+        
         <section class="d-flex flex-column justify-content-center align-items-center text-center border">
             <div style="max-width: 60vw;">
                 <h1 class="mb-4">Enrichissement</h1>
